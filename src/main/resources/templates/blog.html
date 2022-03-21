@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text.html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+		<div class="container-fluid">
+
+			<div
+				class="d-flex justify-content-center align-items-center todo-container">
+				<div class="card card-body">
+					<div class="d-flex justify-content-between">
+						<h3>All</h3>
+						<a href = "createblog"><button class="btn btn-primary">New Blog</button></a>
+					</div>
+					<div>
+						<table class="table table-striped">
+							
+                         <thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Title</th>
+									<th scope="col">Content</th>
+									<th scope="col">action</th>
+								</tr>
+							</thead>
+							<tbody>
+									
+								<tr th:each="blog :${blogs}">
+                                <td th:text="${blog.id}">#</td>
+                                 <td th:text="${blog.title}">title</td>
+                                  <td th:text="${blog.content}">content</td>
+                                  
+                                  <td><a th:href="@{'/show/' + ${blog.id}}" >show</a></td>
+                                 
+                                 <td><a th:href="@{'/update/' + ${blog.id}}">edit</a></td>
+                                 
+                                 <td><a th:href="@{'/delete/' + ${blog.id}}">delete</a></td>
+                                   </tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
